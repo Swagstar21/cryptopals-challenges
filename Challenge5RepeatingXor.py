@@ -6,11 +6,11 @@ with XOR in their bytes and then encoding the ciphertext using Hex
 """
 key = 'ICE'
 plaintext = 'Burning \'em, if you ain\'t quick and nimble\nI go crazy when I hear a cymbal'
-cyphertext = ''
+ciphertext = ''
 
 # Each byte of the plaintext is encrypted with its corresponding key byte
 for i in range(len(plaintext)):
 	aux = ord(key[i % len(key)]) ^ ord(plaintext[i])
-	cyphertext = cyphertext + chr(aux)
+	ciphertext = ciphertext + chr(aux)
 
-print ((cyphertext.encode('utf-8')).hex())
+print ((ciphertext.encode('utf-8')).hex())
