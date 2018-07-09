@@ -1,4 +1,6 @@
 """
+Robert Panduru
+2018
 This is the code necessary to encrypt a variable-sized plaintext with a variable-sized key
 with XOR in their bytes and then encoding the ciphertext using Hex
 """
