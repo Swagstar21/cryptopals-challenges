@@ -57,21 +57,16 @@ def decrypt(string):
 	return True
 
 # We need a random ciphertext which we can tamper with
-ciphertext = encrypt("K" * 16)
+ciphertext = encrypt("A" * 32)
+ciphertext = list(ciphertext)
+needed = ";admin=true;AAAA"
 
-needed = ";admin=true;"
-
-# We will try to change the block before the one
-# we want changed. We stop the computation after
-# finding the admin clause
+# We need the bits that differ between 'A' and every other
+# character that is needed and then we propagate that change
+# through the blocks
 for i in range(len1, len1 + len(needed)):
-	ciphertext = list(ciphertext)
-	for j in range(0, 256):
-		ciphertext[i] = chr(j)
-		text = "".join(ciphertext)
-		text = cipher.decrypt(text)
-		if text[i + 16] == needed[i - len1]:
-			break
+	ciphertext[i] = chr(ord(ciphertext[i]) ^ ord(needed[i % 16]) ^ ord('A'))
+
 
 ciphertext = "".join(ciphertext)
 found = decrypt(ciphertext)
