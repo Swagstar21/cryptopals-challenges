@@ -40,10 +40,10 @@ def encrypt(string):
 	len1 = len(prefix)
 	postfix = ";comment2=%20like%20a%20pound%20of%20bacon"
 	len2 = len(postfix)
-	string = IV + prefix + string + postfix
+	string = prefix + string + postfix
 	for i in range(len(string), (len(string) / 16 + 1) * 16):
 		string += chr(0)
-	return cipher.encrypt(string)
+	return IV + cipher.encrypt(string)
 
 # This function returns True is the contents of the input
 # contain ";admin=true;" after decryption
