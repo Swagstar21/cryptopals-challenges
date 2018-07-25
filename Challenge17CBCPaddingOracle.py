@@ -52,12 +52,11 @@ def encrypt():
 	string = strings[randint(0, len(strings) - 1)]
 	string = base64.b64decode(string)
 	print(string)
-	string = IV + string
 	length = len(string)
 	lengthAppended = (length / 16 + 1) * 16
 	for i in range(length, lengthAppended):
 		string += chr(lengthAppended - length)
-	return cipher.encrypt(string)
+	return IV + cipher.encrypt(string)
 
 # Decrypts the ciphertext
 def decrypt(string):
