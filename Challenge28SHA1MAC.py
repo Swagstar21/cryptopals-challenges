@@ -26,7 +26,7 @@ def wordXOR(word1, word2):
 # It appends to the message a padding and then adds
 # the original length of the message
 def preprocessing(message):
-	ml = len(message)
+	ml = len(message) * 8
 	message += chr(0x80)
 	while len(message) % 64 != 56:
 		message += '\x00'
